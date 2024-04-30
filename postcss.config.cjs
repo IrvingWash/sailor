@@ -9,7 +9,7 @@ module.exports = {
         autoprefixer,
         postcssNested,
         postcssSimpleVars({
-            variables: { ...colors }
+            variables: { ...colors },
         }),
     ],
 };

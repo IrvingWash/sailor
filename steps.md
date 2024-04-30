@@ -6,3 +6,4 @@
 1. Install react and add "hello world"
 1. Add scripts
 1. PostCSS
+1. ESLint

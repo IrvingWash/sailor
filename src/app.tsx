@@ -1,4 +1,4 @@
-import s from './app.module.pcss';
+import s from "./app.module.pcss";
 
 export function App(): JSX.Element {
     return (
