@@ -7,3 +7,4 @@
 1. Add scripts
 1. PostCSS
 1. ESLint
+1. Husky
