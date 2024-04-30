@@ -9,3 +9,4 @@
 1. ESLint
 1. Husky
 1. Github Actions
+1. Tests
