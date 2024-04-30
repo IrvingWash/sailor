@@ -1,1 +1,1 @@
-1. Init git
+1. Init git and add .gitignore
