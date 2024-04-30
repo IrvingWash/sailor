@@ -10,3 +10,4 @@
 1. Husky
 1. Github Actions
 1. Tests
+1. StyleLint
