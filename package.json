@@ -9,6 +9,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" --report-unused-disable-directives --max-warnings=0",
+    "style-lint": "npx stylelint **/*.css",
     "check": "tsc --noEmit",
     "test": "vitest run",
     "prepare": "husky"
