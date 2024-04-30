@@ -11,3 +11,4 @@
 1. Github Actions
 1. Tests
 1. StyleLint
+1. Paths
