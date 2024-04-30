@@ -10,7 +10,7 @@
     "build": "tsc && vite build",
     "lint": "eslint \"{src,apps,libs,test}/**/*.{ts,tsx}\" --report-unused-disable-directives --max-warnings=0",
     "check": "tsc --noEmit",
-    "test": "vitest",
+    "test": "vitest run",
     "prepare": "husky"
   },
   "devDependencies": {

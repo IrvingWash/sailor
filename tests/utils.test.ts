@@ -1,5 +1,5 @@
 import { describe, test, expect } from "vitest";
-import { ensureExists } from "../utils";
+import { ensureExists } from "../src/utils";
 
 describe("ensureExists", () => {
     test("should return the value if it exists", () => {
