@@ -8,3 +8,4 @@
 1. PostCSS
 1. ESLint
 1. Husky
+1. Github Actions
