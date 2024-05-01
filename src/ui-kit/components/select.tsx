@@ -1,5 +1,7 @@
 import { ChangeEvent, useMemo } from "react";
 
+import s from "./select.module.css";
+
 interface SelectProps {
     options: SelectOption[];
     onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
@@ -15,7 +17,7 @@ export function Select(props: SelectProps): JSX.Element {
     const defaultOption = useMemo<SelectOption | undefined>(() => props.options.find((option) => option.default === true), []);
 
     return (
-        <select onChange={ props.onChange } defaultValue={ defaultOption?.value }>
+        <select className={ s.container } onChange={ props.onChange } defaultValue={ defaultOption?.value }>
             { makeOptions() }
         </select>
     );

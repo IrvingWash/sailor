@@ -1,4 +1,7 @@
 import { ChangeEvent } from "react";
+import classNames from "classnames";
+
+import s from "./string-input.module.css";
 
 interface StringInputProps {
     value: string
@@ -11,7 +14,7 @@ interface StringInputProps {
 export function StringInput(props: StringInputProps): JSX.Element {
     return (
         <input
-            className={ props.className }
+            className={ classNames(s.container, props.className) }
             id={ props.id }
             placeholder={ props.placeholder }
             type="string"
