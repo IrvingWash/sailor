@@ -1,16 +1,14 @@
 import { observer } from "mobx-react-lite";
 import { ChangeEvent } from "react";
+import ReactCodeMirror from "@uiw/react-codemirror";
+import { json } from "@codemirror/lang-json";
 
 import { StringInput } from "@ui-kit/components/string-input";
 import { VerticalForm } from "@ui-kit/components/vertical-form";
 import { IRequestFormViewModel } from "./irequest-form-view-model";
-import { CodeInput } from "@ui-kit/components/code-input";
 import { Select, SelectOption } from "@ui-kit/components/select";
-
-import { HttpMethod, isMethodWithBody } from "../utils/http";
-
-import s from "./request-form.module.css";
 import { ActionButton } from "@ui-kit/components/action-button";
+import { HttpMethod, isMethodWithBody } from "../utils/http";
 
 interface RequestFormProps {
     model: IRequestFormViewModel;
@@ -29,7 +27,6 @@ export const RequestForm = observer((props: RequestFormProps): JSX.Element => {
     return (
         <VerticalForm
             onSubmit={ onSubmit }
-            className={ s.container }
             error={ model.error() ?? undefined }
         >
             <StringInput
@@ -43,9 +40,10 @@ export const RequestForm = observer((props: RequestFormProps): JSX.Element => {
             />
             {
                 isMethodWithBody(model.method()) && (
-                    <CodeInput
-                        value={ model.body() ?? "" }
+                    <ReactCodeMirror
+                        value={ model.body() ?? undefined }
                         onChange={ onBodyChange }
+                        extensions={ [json()] }
                     />
                 )
             }
@@ -59,8 +57,8 @@ export const RequestForm = observer((props: RequestFormProps): JSX.Element => {
         model.setUrl(event.target.value);
     }
 
-    function onBodyChange(event: ChangeEvent<HTMLTextAreaElement>): void {
-        model.setBody(event.target.value);
+    function onBodyChange(value: string): void {
+        model.setBody(value);
     }
 
     function onMethodChange(event: ChangeEvent<HTMLSelectElement>): void {
