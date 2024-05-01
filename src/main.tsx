@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { App } from "./app";
+import { AppViewModel } from "./app-view-model";
 
 const rootElement = document.getElementById("root");
 
@@ -10,8 +11,10 @@ if (rootElement === null) {
 
 const root = createRoot(rootElement);
 
+const appViewModel = new AppViewModel();
+
 root.render(
     <StrictMode>
-        <App />
+        <App model={ appViewModel } />
     </StrictMode>,
 );

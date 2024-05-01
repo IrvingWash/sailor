@@ -1,19 +1,26 @@
+import { useMemo } from "react";
+
 import { RequestForm } from "./request-form/request-form";
-import { RequestFormViewModel } from "./request-form/request-form-view-model";
 import { ResponseDisplay } from "./response-display/response-display";
-import { ResponseDisplayViewModel } from "./response-display/response-display-view-model";
+import { IAppViewModel } from "./iapp-view-model";
 
 import s from "./app.module.css";
+import { observer } from "mobx-react-lite";
 
-const requestFormViewModel = new RequestFormViewModel();
-const responseDisplayViewModel = new ResponseDisplayViewModel();
+interface AppProps {
+    model: IAppViewModel;
+}
 
-export function App(): JSX.Element {
+export const App = observer((props: AppProps): JSX.Element => {
+    const requestFormViewModel = useMemo(() => props.model.requestFormViewModel(), []);
+    const responseDisplayViewModel = props.model.responseDisplayViewModel();
 
     return (
         <main className={ s.app }>
             <RequestForm model={ requestFormViewModel } />
-            <ResponseDisplay model={ responseDisplayViewModel } />
+            { responseDisplayViewModel !== null && (
+                <ResponseDisplay model={ responseDisplayViewModel } />
+            ) }
         </main>
     );
-}
+});

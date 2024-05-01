@@ -10,9 +10,12 @@ export class RequestFormViewModel implements IRequestFormViewModel {
     private _body: string | null = null;
     private _isLoading: boolean = false;
     private _error: string | null = null;
+    private _onRequest: (response: Response) => void;
 
-    public constructor() {
+    public constructor(onRequest: (response: Response) => void) {
         makeAutoObservable(this);
+
+        this._onRequest = onRequest;
     }
 
     public url(): string {
@@ -47,7 +50,7 @@ export class RequestFormViewModel implements IRequestFormViewModel {
         return this._error;
     }
 
-    public async send(): Promise<Response | null> {
+    public async send(): Promise<void> {
         this._isLoading = true;
 
         this._error = null;
@@ -67,13 +70,11 @@ export class RequestFormViewModel implements IRequestFormViewModel {
 
             const response = await fetch(appendHttp(this._url), requestInit);
 
-            return response;
+            this._onRequest(response);
         } catch (error) {
             this._error = extractErrorMessage(error);
         } finally {
             this._isLoading = false;
-
-            return null;
         }
     }
 }

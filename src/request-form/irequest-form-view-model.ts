@@ -7,7 +7,7 @@ export interface IRequestFormViewModel {
     setUrl(url: string): void;
     setMethod(method: HttpMethod): void;
     setBody(body: string | null): void;
-    send(): Promise<Response | null>;
+    send(): Promise<void>;
     error(): string | null;
     isLoading(): boolean;
 }
