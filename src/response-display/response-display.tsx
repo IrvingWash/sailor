@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { json } from "@codemirror/lang-json";
 import ReactCodeMirror from "@uiw/react-codemirror";
+import jsBeautify from "js-beautify";
 
 import { IResponseDisplayViewModel } from "./iresponse-display-view-model";
 
@@ -39,6 +40,6 @@ export const ResponseDisplay = (props: ResponseDisplayProps): JSX.Element => {
     async function awaitJson(): Promise<void> {
         const text = await model.json();
 
-        setJson(text);
+        setJson(jsBeautify(text));
     }
 };
