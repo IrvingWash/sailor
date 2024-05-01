@@ -17,6 +17,7 @@ export const App = observer((props: AppProps): JSX.Element => {
 
     return (
         <main className={ s.app }>
+            <h1>Sailor</h1>
             <RequestForm model={ requestFormViewModel } />
             { responseDisplayViewModel !== null && (
                 <ResponseDisplay model={ responseDisplayViewModel } />
