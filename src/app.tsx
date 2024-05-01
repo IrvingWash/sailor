@@ -1,12 +1,15 @@
-import { ActionButton } from "@ui-kit/components/action-button";
+import { RequestForm } from "./request-form/request-form";
+import { RequestFormViewModel } from "./request-form/request-form-view-model";
 
-import s from "./app.module.css";
+import "./app.module.css";
+
+const requestFormViewModel = new RequestFormViewModel();
 
 export function App(): JSX.Element {
+
     return (
-        <div className={ s.block }>
-            <h1 className={ s.reddish }>Hello, World!</h1>
-            <ActionButton onClick={ () => alert("Go") }>Go</ActionButton>
-        </div>
+        <main>
+            <RequestForm model={ requestFormViewModel } />
+        </main>
     );
 }

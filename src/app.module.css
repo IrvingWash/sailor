@@ -1,5 +1,3 @@
-.block {
-    .reddish {
-        color: $silky-red;
-    }
+body {
+    font-family: sans-serif;
 }
