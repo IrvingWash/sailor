@@ -10,9 +10,9 @@ export class RequestFormViewModel implements IRequestFormViewModel {
     private _body: string | null = null;
     private _isLoading: boolean = false;
     private _error: string | null = null;
-    private _onRequest: (response: Response) => void;
+    private _onRequest: (response: Response | null) => void;
 
-    public constructor(onRequest: (response: Response) => void) {
+    public constructor(onRequest: (response: Response | null) => void) {
         makeAutoObservable(this);
 
         this._onRequest = onRequest;
@@ -73,6 +73,7 @@ export class RequestFormViewModel implements IRequestFormViewModel {
             this._onRequest(response);
         } catch (error) {
             this._error = extractErrorMessage(error);
+            this._onRequest(null);
         } finally {
             this._isLoading = false;
         }

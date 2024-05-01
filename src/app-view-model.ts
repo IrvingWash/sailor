@@ -23,7 +23,13 @@ export class AppViewModel {
         return this._responseDisplayViewModel;
     }
 
-    private _onRequest = (response: Response): void => {
+    private _onRequest = (response: Response | null): void => {
+        if (response === null) {
+            this._responseDisplayViewModel = null;
+
+            return;
+        }
+
         this._responseDisplayViewModel = new ResponseDisplayViewModel(response);
     };
 }
