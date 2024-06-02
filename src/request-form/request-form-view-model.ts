@@ -61,6 +61,7 @@ export class RequestFormViewModel implements IRequestFormViewModel {
 
         if (isMethodWithBody(this._method)) {
             requestInit.body = this._body;
+            requestInit.headers = { "Content-Type": "application/json" };
         }
 
         try {
